@@ -1,14 +1,14 @@
 name: ${PROJECT}
 
 services:
-  web:
+  web-legacy:
     image: caddy:alpine
     volumes:
       - ./apps/web:/usr/share/caddy:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${PROJECT}_web.rule=Host(`web.${PROJECT}.localhost`)"
-      - "traefik.http.services.${PROJECT}_web.loadbalancer.server.port=80"
+      - "traefik.http.routers.${PROJECT}_web_legacy.rule=Host(`web-legacy.${PROJECT}.localhost`)"
+      - "traefik.http.services.${PROJECT}_web_legacy.loadbalancer.server.port=80"
     networks:
       - traefik
   
