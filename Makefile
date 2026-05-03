@@ -27,8 +27,19 @@ build:
 logs:
 	$(DC) logs -f $(service)
 
+## shell: Open a shell in the application container
+.PHONY: shell
 shell:
 	$(DC) exec $(service) sh
+
+## prune: Stop the application and remove volumes
+.PHONY: prune
+prune:
+	$(DC) down -v
+
+## restart: Restart the application
+.PHONY: restart
+restart: down up
 
 # https://stackoverflow.com/a/6273809/1826109
 %:
